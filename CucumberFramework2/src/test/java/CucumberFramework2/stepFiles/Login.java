@@ -20,7 +20,7 @@ public class Login {
 	    this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS)
+		this.driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 		
 	}
 	
@@ -29,7 +29,7 @@ public class Login {
 		Thread.sleep(3000);
 		this.driver.manage(deleteAllCookies();
 		this.driver.quit();
-		this.driver - null
+		this.driver = null;
 	}
 	
 	@Given("^User navigets to ubs website$")
@@ -50,13 +50,14 @@ public class Login {
 	public void user_clicks_on_the_type_of_login() throws Throwable {
 		//a[text()='US login account login']
 		driver.findElement(By.xpath("//*[@id=\"menulabel-9338\"]")).click();
-		
-		
+	
+	}
+			
 	
 	@And("^User enters a valid username$")
 	public void user_enters_a_valid_username() throws Throwable {
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys('arturmroz")
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("arturmroz");
 				
 		
 	}
@@ -64,25 +65,25 @@ public class Login {
 	@And("^User enters a invalid username$")
 	public void user_enters_a_invalid_username() throws Throwable {
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys('xyz")
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("xyz");
 	
 	@And("^User enters a valid password$")
 	public void user_enters_a_valid_password() throws Throwable {
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys('umniedziala")
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("umniedziala");
 		
 	}
 	
-	@And("^User enters a valid password$")
-	public void user_enters_a_valid_password() throws Throwable {
+	@And("^User enters a invalid password$")
+	public void user_enters_a_invalid_password() throws Throwable {
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys('umniedziala")
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("xyz");
 		
 	}
 	
 	@When("^User clicks on the login button$")
 	public void user_clicks_on_the_login_button() throws Throwable {
-		driver.findElement(By.xpath("//*[@id=\"submit\"]")).click()
+		driver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
 		
 	}
 	
@@ -95,7 +96,7 @@ public class Login {
 	}
 	
 	@Then("^User should be taken to the unsuccessful login page$")
-	public void user_should_be_taken_to_the_successful_login_page() throws Throwable {
+	public void user_should_be_taken_to_the_unsuccessful_login_page() throws Throwable {
 		Thread.sleep(3000);
 		WebElement Error = driver.findElement(By.xpath("//a[contains(test(), 'not match')]"));
 		Assert.assertEquals(true, Error.isDisplayer());
